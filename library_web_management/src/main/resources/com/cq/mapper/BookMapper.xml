@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cq.mapper.BookMapper">
+    <update id="update" >
+        UPDATE books
+        <set>
+            <if test="title != null and title != ''">
+                title = #{title},
+            </if>
+            <if test="author != null and author != ''">
+                author = #{author},
+            </if>
+            <if test="isbn != null and isbn != ''">
+                isbn = #{isbn},
+            </if>
+            <if test="publishedYear != null">
+                published_year = #{publishedYear},
+            </if>
+            <if test="status != null">
+                status = #{status},
+            </if>
+        </set>
+        WHERE book_id = #{bookId}
+    </update>
+</mapper>
